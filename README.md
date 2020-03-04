@@ -1,2 +1,2 @@
-# whatch_your_mouth
+# watch_your_mouth
 Glotto shenanigans
