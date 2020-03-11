@@ -11,15 +11,18 @@ tr = read.table( "signi_ancestor_internal_ABBA_BABA.txt", sep = "\t", h = T)
 
 par(new=TRUE)
 
+
+tttt = read.tree('spe_dist')
+ttttspnd<-c(tttt$tip.label, tttt$node.label)
+spnd<-c(tree$tip.label, tree$node.label)
+
 plot(tree,
-  show.node = T,
   no.margin = TRUE,
   edge.width = 2,
   direction = "downwards",
   type = "phylogram",
-  srt = 0,
-  adj = -0.8
 )
+nodelabels(spnd[c(29:45)], adj = c(0.5, -0.8), cex = 0.5)
 
 
 trcol <- function(col, alpha=1){
@@ -36,7 +39,6 @@ edge<-tree$edge
 lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
 x<-lastPP$xx
 y<-lastPP$yy
-spnd<-c(tree$tip.label, tree$node.label)
 par(new=TRUE)
 
 
@@ -45,7 +47,6 @@ tr$P1 = as.character(tr$P1)
 tr$P2 = as.character(tr$P2)
 for (i in 1:nrow(tr)) {
   if (as.numeric(as.character(tr[i,10])) > 0) {
-    print(i)
     temp = tr[i,1]
     tr[i,1] = tr[i,2]
     tr[i,2] = temp
@@ -175,14 +176,16 @@ n9 = tr[tr$P2 == "N9",]
 nmara = tr[tr$P2 == "mara1378",]
 nsout = tr[tr$P2 == "sout2672",]
 
-
-
 pdf("glotto_N11.pdf",width=29.7/2.54, height=21/2.54)
 tr = n11
 par(new=TRUE)
-plot(tree,show.node = T, no.margin = TRUE, edge.width = 2, direction = "downwards",
-  type = "phylogram", srt = 0, adj = -0.8)
-title("ABBA BABA tranfers events relative to P2 = N11", line = -2)
+plot(tree,
+  no.margin = TRUE,
+  edge.width = 2,
+  direction = "downwards",
+  type = "phylogram",
+)
+title("ABBA BABA tranfers events relative to P2 = N11", line = -2, adj = 0.1)
 matP4 <- matrix(ncol=5, nrow=nrow(tr))
 s <- seq(nrow(tr))  # one shorter than data
 for (i in 1:nrow(tr)) {
@@ -208,15 +211,24 @@ for (i in 1:nrow(tr)) {
   ywherefrom <- rnorm(1, mean= y[wherefrom] - (y[wherefrom] - y[fromdad])/2, 2)
   ywhereto <- rnorm(1, mean= y[whereto] - (y[whereto] - y[todad])/2, 2)
   matP3[i,] <- c(x[wherefrom], ywherefrom,x[whereto],ywhereto,1)}
-arrows(as.numeric(matP4[s,1]),as.numeric(matP4[s,2]),as.numeric(matP4[s,3]),as.numeric(matP4[s,4]), col ="red",lwd=1.5, length = 0.15)
-arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="blue",lwd=1.5, length = 0.15)
+arrows(as.numeric(matP4[s,1]),as.numeric(matP4[s,2]),as.numeric(matP4[s,3]),as.numeric(matP4[s,4]), col ="red",lwd=1.5, length = 0.15, code = 3)
+arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="blue",lwd=1.5, length = 0.15, code = 3)
+nodelabels(ttttspnd[c(29:45)], adj = c(0.5, -0.8), cex = 0.7)
+
 dev.off()
+
+
+
 pdf("glotto_N15.pdf",width=29.7/2.54, height=21/2.54)
 tr = n15
 par(new=TRUE)
-plot(tree,show.node = T, no.margin = TRUE, edge.width = 2, direction = "downwards",
-  type = "phylogram", srt = 0, adj = -0.8)
-title("ABBA BABA tranfers events relative to P2 = N15", line = -2)
+plot(tree,
+  no.margin = TRUE,
+  edge.width = 2,
+  direction = "downwards",
+  type = "phylogram",
+)
+title("ABBA BABA tranfers events relative to P2 = Mewati-Gojri", line = -2, adj = 0.1)
 matP4 <- matrix(ncol=5, nrow=nrow(tr))
 s <- seq(nrow(tr))  # one shorter than data
 for (i in 1:nrow(tr)) {
@@ -242,15 +254,24 @@ for (i in 1:nrow(tr)) {
   ywherefrom <- rnorm(1, mean= y[wherefrom] - (y[wherefrom] - y[fromdad])/2, 2)
   ywhereto <- rnorm(1, mean= y[whereto] - (y[whereto] - y[todad])/2, 2)
   matP3[i,] <- c(x[wherefrom], ywherefrom,x[whereto],ywhereto,1)}
-arrows(as.numeric(matP4[s,1]),as.numeric(matP4[s,2]),as.numeric(matP4[s,3]),as.numeric(matP4[s,4]), col ="red",lwd=1.5, length = 0.15)
-arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="blue",lwd=1.5, length = 0.15)
+arrows(as.numeric(matP4[s,1]),as.numeric(matP4[s,2]),as.numeric(matP4[s,3]),as.numeric(matP4[s,4]), col ="red",lwd=1.5, length = 0.15, code = 3)
+arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="blue",lwd=1.5, length = 0.15, code = 3)
+nodelabels(ttttspnd[c(29:45)], adj = c(0.5, -0.8), cex = 0.7)
+
 dev.off()
+
+
+
 pdf("glotto_N9.pdf",width=29.7/2.54, height=21/2.54)
 tr = n9
 par(new=TRUE)
-plot(tree,show.node = T, no.margin = TRUE, edge.width = 2, direction = "downwards",
-  type = "phylogram", srt = 0, adj = -0.8)
-title("ABBA BABA tranfers events relative to P2 = N9", line = -2)
+plot(tree,
+  no.margin = TRUE,
+  edge.width = 2,
+  direction = "downwards",
+  type = "phylogram",
+)
+title("ABBA BABA tranfers events relative to P2 = Maithili-Magahi", line = -2, adj = 0.1)
 matP4 <- matrix(ncol=5, nrow=nrow(tr))
 s <- seq(nrow(tr))  # one shorter than data
 for (i in 1:nrow(tr)) {
@@ -276,9 +297,17 @@ for (i in 1:nrow(tr)) {
   ywherefrom <- rnorm(1, mean= y[wherefrom] - (y[wherefrom] - y[fromdad])/2, 2)
   ywhereto <- rnorm(1, mean= y[whereto] - (y[whereto] - y[todad])/2, 2)
   matP3[i,] <- c(x[wherefrom], ywherefrom,x[whereto],ywhereto,1)}
-arrows(as.numeric(matP4[s,1]),as.numeric(matP4[s,2]),as.numeric(matP4[s,3]),as.numeric(matP4[s,4]), col ="red",lwd=1.5, length = 0.15)
-arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="blue",lwd=1.5, length = 0.15)
+arrows(as.numeric(matP4[s,1]),as.numeric(matP4[s,2]),as.numeric(matP4[s,3]),as.numeric(matP4[s,4]), col ="red",lwd=1.5, length = 0.15, code = 3)
+arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="blue",lwd=1.5, length = 0.15, code = 3)
+nodelabels(ttttspnd[c(29:45)], adj = c(0.5, -0.8), cex = 0.7)
+
 dev.off()
+
+
+
+
+
+
 pdf("glotto_mara.pdf",width=29.7/2.54, height=21/2.54)
 tr = nmara
 par(new=TRUE)
