@@ -21,3 +21,11 @@ for i in t.iter_descendants():
 
 t.name = "World"
 t.write(outfile = "spe_rename", format=1, format_root_node=True)
+
+
+for i in t.iter_descendants():
+    if not i.is_leaf():
+        i.name = i.name.split("_")[0]
+
+
+t.write(outfile = "spe_gra", format=1, format_root_node=True)
