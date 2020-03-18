@@ -219,6 +219,25 @@ dev.off()
 
 
 
+
+pdf("languagetree.pdf",width=29.7/2.54, height=21/2.54)
+
+
+plot(tree,
+  no.margin = TRUE,
+  edge.width = 2,
+  direction = "downwards",
+  type = "phylogram",
+)
+title("Arbre des langues indo-aryennes", line = -2, adj = 0.1)
+nodelabels(ttttspnd[c(29:45)], adj = c(0.5, -0.8), cex = 0.7)
+
+
+
+dev.off()
+
+
+
 pdf("glotto_N15.pdf",width=29.7/2.54, height=21/2.54)
 tr = n15
 par(new=TRUE)
