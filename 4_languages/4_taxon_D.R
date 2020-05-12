@@ -55,7 +55,7 @@ colnames(tpho)="topo"
 tpho$data="phono"
 topo<-rbind(tlex,tmor,tpho)
 stopo<-topo[order(topo$data,topo$topo),]
-write.table(stopo,file=paste(file,"_traits.txt", pas=""),col.names=F, row.names=T)
+write.table(stopo,file=paste(file,"_traits.txt", sep=""),col.names=F, row.names=T)
 
 
 dlexi<-table(lex)
@@ -75,4 +75,4 @@ temp$data<-c("lexi","morpho","phono")
 temp<-temp[,c("P1","P2","P3","O","data",pat)]
 temp$D<-(temp$abba-temp$baba)/(temp$abba+temp$baba)
 temp$Dall=(sum(temp$abba)-sum(temp$baba))/(sum(temp$abba)+sum(temp$baba))
-write.table(temp,file=paste(file,"_res.txt", pas=""),col.names=T)
+write.table(temp,file=paste(file,"_res.txt", sep=""),col.names=T)
