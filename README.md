@@ -1,4 +1,5 @@
 Glotto shenanigans
+<pre>
 
 ABIR
                      |
@@ -40,3 +41,4 @@ PBIR
    /        \         \           \
 roma1327 ital1282  bulg1262    west2369
 Romanian  Italian  Bulgarian Western-Farsi
+<pre>
