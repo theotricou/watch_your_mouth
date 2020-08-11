@@ -73,6 +73,12 @@ temp$P3<-ord[3]
 temp$O<-ord[4]
 temp$data<-c("lexi","morpho","phono")
 temp<-temp[,c("P1","P2","P3","O","data",pat)]
+temp$sum<-apply(temp,1,function(x) sum(as.numeric(as.character(x[6:13]))))
+
 temp$D<-(temp$abba-temp$baba)/(temp$abba+temp$baba)
-temp$Dall=(sum(temp$abba)-sum(temp$baba))/(sum(temp$abba)+sum(temp$baba))
-write.table(temp,file=paste(file,"_res.txt", sep=""),col.names=T)
+temp$Pvalue<-apply(temp,1,function(x) binom.test(c(as.numeric(as.character(x[9])),as.numeric(as.character(x[11]))),p=0.5)$p.value)
+
+temp$D_all_data=(sum(temp$abba)-sum(temp$baba))/(sum(temp$abba)+sum(temp$baba))
+temp$D_all_data_Pvalue=binom.test(c(sum(temp$abba),sum(temp$baba)),p=0.5)$p.value
+
+write.table(temp,file=paste(file,"_res.txt", sep=""),col.names=T,row.names=F,quote=F)

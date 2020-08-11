@@ -7,7 +7,10 @@ require('phangorn')
 tree = read.tree('spe_gra')
 # plot(tree, show.node = T)
 
-tr = read.table( "signi_ancestor_internal_ABBA_BABA.txt", sep = "\t", h = T)
+tr = read.table("signi_ancestor_internal_ABBA_BABA.txt", sep = "\t", h = T)
+tr = read.table("9_signi_D.txt", sep = "\t", h = T)
+
+
 
 par(new=TRUE)
 
@@ -42,7 +45,7 @@ y<-lastPP$yy
 par(new=TRUE)
 
 
-tr = read.table( "signi_ancestor_internal_ABBA_BABA.txt", sep = "\t", h = T)
+tr = read.table("9_signi_D.txt", sep = "\t", h = T)
 tr$P1 = as.character(tr$P1)
 tr$P2 = as.character(tr$P2)
 for (i in 1:nrow(tr)) {
@@ -61,7 +64,7 @@ n11 = tr[tr$P2 == "N11",]
 n15 = tr[tr$P2 == "N15",]
 n9 = tr[tr$P2 == "N9",]
 
-pdf("glotto_tree_P3tr_pdf",width=29.7/2.54, height=21/2.54)
+pdf("test.pdf",width=29.7/2.54, height=21/2.54)
 
 par(new=TRUE)
 
@@ -99,7 +102,7 @@ for (i in 1:nrow(tr)) {
 
   matP3[i,] <- c(x[wherefrom], ywherefrom,x[whereto],ywhereto,1)
 }
-arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="red",lwd=3, length = 0.2)
+arrows(as.numeric(matP3[s,1]),as.numeric(matP3[s,2]),as.numeric(matP3[s,3]),as.numeric(matP3[s,4]), col ="red",lwd=2, length = 0.2,code = 3)
 
 
 dev.off()
