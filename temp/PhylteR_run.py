@@ -267,8 +267,12 @@ if __name__ == "__main__":
                     same.append(ali)
 
             if len(same) >= 1:
-                command = 'cp {' + ",".join(same) + '} ' + pathToOut
-                phylter = Popen(command, stdout=logfile, stderr=logfile, shell=True)
+                print("Copying other sequences files"+'\n')
+                logfile.write("Copying other sequences files"+'\n')
+                for file in same:
+                    shutil.copy(file, pathToOut)
+                # command = 'cp {' + ",".join(same) + '} ' + pathToOut
+                # phylter = Popen(command, stdout=logfile, stderr=logfile, shell=True)
         else:
             print("No sequences outliers detected by PhylteR to remove"+'\n')
             logfile.write("No sequences outliers detected by PhylteR to remove"+'\n')
