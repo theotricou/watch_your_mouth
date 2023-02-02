@@ -82,7 +82,6 @@ if __name__ == "__main__":
         exit()
 
     if args.versionCheck == True:
-        import re
         command = "Rscript --slave -e 'library(pylter); packageVersion(phylter)'"
         output = subprocess.check_output(command, shell = True)
         print(paste("PhylteR current version on this singularity container is: ", re.split('‘|’', output.decode('utf-8').strip())[1], sep =""))
@@ -205,7 +204,7 @@ if __name__ == "__main__":
         print("\nStarting tree pruning step" + '\n')
         logfile.write("\nStarting tree pruning step" + '\n')
 
-        command = 'Rscript --slave '+ 'prune_outliers.R ' + str(args.trees) + ' ' + str(args.jobname)
+        command = 'prune_outliers.R ' + str(args.trees) + ' ' + str(args.jobname)
         print("Tree pruning command used = "+command+"\n")
         logfile.write("Tree pruning command used = "+command +"\n")
 
