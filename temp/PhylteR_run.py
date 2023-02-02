@@ -99,8 +99,8 @@ if __name__ == "__main__":
     logfile=open(Logfile,"a")
 
     if os.path.isdir(args.jobname):
-        print("\nERROR: Job name is already used.")
-        logfile.write("\nERROR: Job name is already used.")
+        print("\nERROR: Job name is already being used.")
+        logfile.write("\nERROR: Job name is already being used.")
         exit()
 
     if args.jobname == "":

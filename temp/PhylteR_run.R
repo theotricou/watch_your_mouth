@@ -80,11 +80,11 @@ report_to_pdf<-as.logical(args[15])
 # Job name for outputs.
 output_job<-as.character(args[16])
 
-print(paste("phylter(trees, bvalue = ", bvalue, ", distance = ", distance,
+cat(paste("phylter(trees, bvalue = ", bvalue, ", distance = ", distance,
   ", k = ", k, ",k2 = ", k2, ", Norm = ", norm, ", Norm.cutoff = ", normcutoff,
   ", gene.names = ", names, ", test.island = ", island, ", verbose = ", verbose,
   ", stop.criteria = ", stopc, ", InitialOnly = ", InitialOnly,
-  ", normalizeby = ", normby, ", parallel = ", parallel_task, ")", sep=""))
+  ", normalizeby = ", normby, ", parallel = ", parallel_task, ")\n", sep=""))
 
 results<-phylter(trees, bvalue = bvalue, distance = distance, k = k, k2 = k2,
   Norm = norm, Norm.cutoff = normcutoff, gene.names = names,

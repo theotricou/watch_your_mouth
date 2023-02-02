@@ -8,7 +8,6 @@ args = commandArgs(trailingOnly=TRUE)
 # load required packages
 library(ape)
 
-
 #load arguments
 
 # Gene trees directory.
@@ -17,10 +16,10 @@ trees_dir<-as.character(args[1])
 # Phylter output file containing outliers.
 job_dir<-as.character(args[2])
 
-
-print(args)
 #outlier data frame
 outliers <- read.table(paste(job_dir,"/phylter.out", sep=''), h=F)
+
+
 
 if (nrow(outliers)>=1){
   # list gene tree files
@@ -47,22 +46,21 @@ if (nrow(outliers)>=1){
       if (length(pruned_tree$tip.label) > 2){
         write.tree(pruned_tree, file = paste(job_dir, "/trees_PhylteR/", tree_name[1,1], "_phylter", sep=""))
       }else{
-        print(paste("Tree from gene", tree_name[1,1], "was removed due to insufficient number of leaves remaining: nTip =", length(pruned_tree$tip.label)))
+        cat(paste("Tree from gene", tree_name[1,1], "was removed due to insufficient number of leaves remaining: nTip =", length(pruned_tree$tip.label, "\n")))
       }
     }else{
-      print(paste("Tree from gene", tree_name[1,1], "was removed due to insufficient number of leaves remaining: nTip = 0"))
+      cat(paste("Tree from gene", tree_name[1,1], "was removed due to insufficient number of leaves remaining: nTip = 0\n"))
     }
   }
   by(outliers, outliers[,1], function(x) prunetree(x))
 
 
-  print(paste("The remaining ", length(same) , " gene tree are unfiltered",  sep = ""))
+  cat(paste("The remaining ", length(same) , " gene tree are unfiltered\n",  sep = ""))
   invisible(lapply(same, function(x) {
     cmd <- paste("cp ", x, " ", job_dir, "/trees_PhylteR/", sep ="")
     system(cmd)
     }
   ))
 }else{
-  print("There is no outliers and no tree to prune")
+  cat("There is no outliers and no tree to prune\n")
 }
-
