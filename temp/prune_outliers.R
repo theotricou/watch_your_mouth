@@ -44,7 +44,7 @@ if (nrow(outliers)>=1){
       to_remove <- tree_name[,2]
       pruned_tree <- keep.tip(tree, tree$tip.label[-which(tree$tip.label %in% to_remove)])
       if (length(pruned_tree$tip.label) > 2){
-        write.tree(pruned_tree, file = paste(job_dir, "/trees_PhylteR/", tree_name[1,1], "_phylter", sep=""))
+        write.tree(pruned_tree, file = paste(job_dir, "/trees_PhylteR/", tree_name[1,1], "_phylter.nwk", sep=""))
       }else{
         cat(paste("Tree from gene", tree_name[1,1], "was removed due to insufficient number of leaves remaining: nTip =", length(pruned_tree$tip.label, "\n")))
       }
