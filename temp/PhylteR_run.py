@@ -189,7 +189,7 @@ if __name__ == "__main__":
     phylter = Popen(command, stdout= subprocess.PIPE, stderr = logfile, shell=True)
     for line in phylter.stdout:
         print(line.decode('utf-8').strip())
-        logfile.write(line.decode('utf-8').strip())
+        logfile.write(line.decode('utf-8'))
     phylter.wait()
 
     if os.path.isfile(os.path.join(pathToWork,"phylter.out")):
@@ -215,12 +215,12 @@ if __name__ == "__main__":
         prune_trees = Popen(command, stdout= subprocess.PIPE, stderr = logfile, shell=True)
         for line in prune_trees.stdout:
             print(line.decode('utf-8').strip())
-            logfile.write(line.decode('utf-8').strip())
+            logfile.write(line.decode('utf-8').strip()+"\n")
         prune_trees.wait()
 
         tt=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print("Trees have been pruned - "+tt+'\n')
-        logfile.write("Trees have been pruned - "+tt+'\n'+"\n")
+        print('\n'+"Trees have been pruned - "+tt+'\n')
+        logfile.write('\n'+"Trees have been pruned - "+tt+'\n'+"\n")
 
     #####################################
     ######     Prune sequences     ######
