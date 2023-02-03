@@ -189,7 +189,7 @@ if __name__ == "__main__":
     phylter = Popen(command, stdout= subprocess.PIPE, stderr = logfile, shell=True)
     for line in phylter.stdout:
         print(line.decode('utf-8').strip())
-        logfile.write(line.decode('utf-8'))
+        logfile.write(line.decode('utf-8')+"\n")
     phylter.wait()
 
     if os.path.isfile(os.path.join(pathToWork,"phylter.out")):
@@ -215,11 +215,11 @@ if __name__ == "__main__":
         prune_trees = Popen(command, stdout= subprocess.PIPE, stderr = logfile, shell=True)
         for line in prune_trees.stdout:
             print(line.decode('utf-8').strip())
-            logfile.write(line.decode('utf-8').strip()+"\n")
+            logfile.write(line.decode('utf-8')+"\n")
         prune_trees.wait()
 
         tt=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print('\n'+"Trees have been pruned - "+tt+'\n')
+        print('\n'+'\n'+"Trees have been pruned - "+tt+'\n')
         logfile.write('\n'+"Trees have been pruned - "+tt+'\n'+"\n")
 
     #####################################
@@ -261,6 +261,7 @@ if __name__ == "__main__":
                 if match != False:
                     ID=".".join(ali.split('/')[-1].split(".")[:-1])
                     fout=open(os.path.join(pathToOut,ID+"_phylter.fasta"),"w")
+                    print(os.path.join(pathToOut,ID+"_phylter.fasta"))
                     for name,seq in read_fasta(open(ali)):
                         if not "@"+name.replace(">","")+"@" in dico.get(match):
                             fout.write(name+"\n"+seq+"\n")
