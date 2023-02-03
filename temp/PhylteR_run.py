@@ -260,15 +260,14 @@ if __name__ == "__main__":
                 if match != False:
                     ID=".".join(ali.split('/')[-1].split(".")[:-1])
                     fout=open(os.path.join(pathToOut,ID+"_phylter.fasta"),"w")
-                    print(os.path.join(pathToOut,ID+"_phylter.fasta"))
                     for name,seq in read_fasta(open(ali)):
                         if not "@"+name.replace(">","")+"@" in dico.get(match):
                             fout.write(name+"\n"+seq+"\n")
                     fout.close()
                     if os.stat(os.path.join(pathToOut,ID+"_phylter.fasta")).st_size == 0:
                         os.remove(os.path.join(pathToOut,ID+"_phylter.fasta"))
-                        print(" ".join(["The sequences file from gene", match, "is empty after outliers are removed"])+'\n')
-                        logfile.write(" ".join(["The sequences file from gene", match, "is empty after outliers are removed"])+'\n'+"\n")
+                        print(" ".join(["The sequences file from gene", match, "is empty after outliers are removed"]))
+                        logfile.write(" ".join(["The sequences file from gene", match, "is empty after outliers are removed"])+'\n')
 
                 else:
                     same.append(ali)
