@@ -82,7 +82,7 @@ if __name__ == "__main__":
         exit()
 
     if args.versionCheck == True:
-        command = "Rscript --slave -e 'library(pylter); packageVersion(phylter)'"
+        command = "Rscript -e 'library(pylter); packageVersion(phylter)'"
         output = subprocess.check_output(command, shell = True)
         print(paste("PhylteR current version on this singularity container is: ", re.split('‘|’', output.decode('utf-8').strip())[1], sep =""))
         exit()
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     ######       Run PhylteR       ######
     #####################################
 
-    command = 'Rscript --slave '+ module_dir + '/PhylteR_run.R ' + str(trees) + ' ' + str(args.bvalue) + ' ' + str(args.distance) + ' ' + str(args.k) + ' ' + str(args.k2) + ' ' + str(args.norm) + ' ' + str(args.normcutoff) + ' ' + args.genes + ' ' + str(args.island) + ' ' + str(args.verbose) + ' ' + str(args.stop) + ' ' + str(args.InitialOnly) + ' ' + str(args.normalizeby) + ' ' + str(args.parallel) + ' ' + str(args.graph) + ' ' + str(args.jobname)
+    command = 'Rscript '+ module_dir + '/PhylteR_run.R ' + str(trees) + ' ' + str(args.bvalue) + ' ' + str(args.distance) + ' ' + str(args.k) + ' ' + str(args.k2) + ' ' + str(args.norm) + ' ' + str(args.normcutoff) + ' ' + args.genes + ' ' + str(args.island) + ' ' + str(args.verbose) + ' ' + str(args.stop) + ' ' + str(args.InitialOnly) + ' ' + str(args.normalizeby) + ' ' + str(args.parallel) + ' ' + str(args.graph) + ' ' + str(args.jobname)
 
 
     print("PhylteR command used = "+command+"\n")
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     for line in phylter.stdout:
         sys.stdout.write(line.decode('utf-8')+'\n')
         logfile.write(line.decode('utf-8')+'\n')
-    prune_trees.wait()
+    phylter.wait()
 
     if os.path.isfile(os.path.join(pathToWork,"phylter.out")):
         print("PhylteR is done - "+datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
