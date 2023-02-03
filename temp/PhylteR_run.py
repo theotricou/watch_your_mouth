@@ -253,8 +253,7 @@ if __name__ == "__main__":
             print(str(phylter) + " sequences files to filter" + '\n')
             logfile.write(str(phylter) + " sequences files to filter" + '\n'+"\n")
 
-            aln_dir="alis"
-            list_ali=sorted(glob.glob(aln_dir+"/*"))
+            list_ali=sorted(glob.glob(args.sequences+"/*"))
             same = []
             for ali in list_ali:
                 match = next((x for x in list(dico.keys()) if x in ali), False)
