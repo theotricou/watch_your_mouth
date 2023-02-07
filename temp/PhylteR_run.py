@@ -189,7 +189,7 @@ if __name__ == "__main__":
     phylter = Popen(command, stdout= subprocess.PIPE, stderr = logfile, shell=True)
     for line in phylter.stdout:
         print(line.decode('utf-8').strip())
-        logfile.write(line.decode('utf-8')+"\n")
+        logfile.write(line.decode('utf-8'))
     phylter.wait()
 
     if os.path.isfile(os.path.join(pathToWork,"phylter.out")):
