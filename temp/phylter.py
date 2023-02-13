@@ -208,7 +208,7 @@ if __name__ == "__main__":
         print("\nStarting tree pruning step" + '\n')
         logfile.write("\nStarting tree pruning step" + '\n'+"\n")
 
-        command = 'prune_tree_outliers.R ' + str(args.jobname) + ' ' + str(args.trees) + ' ' + str(os.path.join(args.jobname, "phylter.out")))
+        command = 'prune_tree_outliers.R ' + str(args.jobname) + ' ' + str(args.trees) + ' ' + str(os.path.join(args.jobname, "phylter.out"))
         print("Tree pruning command used = "+command+"\n")
         logfile.write("Tree pruning command used = "+command +"\n"+"\n")
 
