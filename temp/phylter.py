@@ -46,7 +46,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='''Phylter is a tool that allows detecting, removing and visualizing outliers in phylogeneomics dataset by iteratively removing taxa in genes and optimizing a score of concordance between individual matrices.''', formatter_class=SmartFormatter)
     parser.add_argument('-j', '--job-name', help='''Job name also used as output directory''', default="PhylteR", dest='jobname')
     parser.add_argument('-t', '--trees', help='''Directory containing gene tree files (only)''', default="", dest='trees')
-    parser.add_argument('-s', '--sequences', help='''Directory containing FASTA gene sequences (aligned or not). Optional but mandatory for cleaning step. FASTA files must be .fasta, .fst, .faa or .fna files.''', default="NULL", dest='sequences')
+    parser.add_argument('-s', '--sequences', help='''Directory containing FASTA gene sequences (aligned or not). Optional but mandatory for cleaning step.''', default="NULL", dest='sequences')
     parser.add_argument('-bv', '--bvalue', help='''Nodes with a support below this value will be collapsed prior to the outlier detection''', default=0, type=float, dest='bvalue')
     parser.add_argument('-d', '--distance', help = 'Type of distance used to compute the pairwise matrices for each tree. Can be \"patristic\" (sum of branch lengths separating tips, the default) or nodal (number of nodes separating tips).The \"nodal\" option should only be used if all species are present in all genes.', default="patristic", dest='distance')
     parser.add_argument('-k', help='''Strength of outlier detection. The higher this value the less outliers detected. (Default=3)''', default=3, type=float, dest='k')
@@ -208,7 +208,7 @@ if __name__ == "__main__":
         print("\nStarting tree pruning step" + '\n')
         logfile.write("\nStarting tree pruning step" + '\n'+"\n")
 
-        command = 'prune_outliers.R ' + str(args.trees) + ' ' + str(args.jobname)
+        command = 'prune_tree_outliers.R ' + str(args.trees) + ' ' + str(args.jobname) + ' ' + str(os.path.join(args.jobname, "phylter.out")))
         print("Tree pruning command used = "+command+"\n")
         logfile.write("Tree pruning command used = "+command +"\n"+"\n")
 

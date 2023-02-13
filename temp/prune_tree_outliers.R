@@ -17,7 +17,7 @@ trees_dir<-as.character(args[1])
 job_dir<-as.character(args[2])
 
 #outlier data frame
-outliers <- read.table(paste(job_dir,"/phylter.out", sep=''), h=F)
+outliers <- read.table(args[2], h=F)
 
 
 
