@@ -32,7 +32,7 @@ if (nrow(outliers)>=1){
 
 
 
-
+  dir.create(file.path(paste(job_dir, sep="")), showWarnings = FALSE)
   dir.create(file.path(paste(job_dir, "/trees_PhylteR", sep="")), showWarnings = FALSE)
 
   # this funciton
