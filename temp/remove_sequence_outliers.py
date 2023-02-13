@@ -4,18 +4,8 @@
 
 import sys, subprocess, time, shlex, os, shutil, argparse, re, glob, subprocess
 from shutil import copyfile
-import collections
-from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
-import random
-import string
-import tempfile
-from threading import Thread
 from argparse import RawTextHelpFormatter
-import os.path
 from datetime import datetime
-import time
-import operator
 
 class SmartFormatter(argparse.HelpFormatter):
 

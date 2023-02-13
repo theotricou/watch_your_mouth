@@ -10,14 +10,14 @@ library(ape)
 
 #load arguments
 
-# Gene trees directory.
-trees_dir<-as.character(args[1])
-
 # Phylter output file containing outliers.
-job_dir<-as.character(args[2])
+job_dir<-as.character(args[1])
+
+# Gene trees directory.
+trees_dir<-as.character(args[2])
 
 #outlier data frame
-outliers <- read.table(args[2], h=F)
+outliers <- read.table(args[3], h=F)
 
 
 
