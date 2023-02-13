@@ -19,6 +19,7 @@ trees_dir<-as.character(args[2])
 #outlier data frame
 outliers <- read.table(args[3], h=F)
 
+print("Starting tree pruning step")
 
 
 if (nrow(outliers)>=1){
