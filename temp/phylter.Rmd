@@ -86,16 +86,31 @@ singularity exec phylter_beta_latest.sif PhylteR_run.py -j Carnivora_PhylteR -t 
 
 
 
-
+version=0.9.6-7
 
 
 docker & singularity
 
 
-sudo docker build --network=host -t phylter_docker:0.9.6-3 ./
-sudo docker push treecoutheo/phylter_docker:0.9.6-3
-sudo docker tag treecoutheo/phylter_docker:0.9.6-3 treecoutheo/phylter_docker:latet
-sudo docker pull treecoutheo/phylter_docker:0.9.6-3
+sudo docker build --network=host -t treecoutheo/phylter_docker:$version ./
+
+
+docker tag treecoutheo/phylter_docker:$version treecoutheo/phylter_docker:latest
+docker images
+
+docker push -a treecoutheo/phylter_docker
+
+
+sudo singularity build phylter_singularity.sif docker://treecoutheo/phylter_docker:$version
+
+singularity sign phylter_singularity.sif
+
+singularity verify phylter_singularity.sif
+
+singularity push phylter_singularity.sif library://theo.treecou/tool/phylter_singularity:$version
+
+
+sudo docker pull treecoutheo/phylter_docker:$version
 sudo docker run phylter_docker PhylteR_run.py -h
 sudo docker run -v $PWD:$PWD -w $PWD treecoutheo/phylter_docker PhylteR_run.py -j test -t /usr/container-data/trees -s /usr/container-data/alignments -p TRUE
 
