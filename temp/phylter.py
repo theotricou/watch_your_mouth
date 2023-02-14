@@ -161,7 +161,7 @@ if __name__ == "__main__":
         if len(lt) != len(set(lst)):
             command = 'for i in ' + trees_dir + '/*; do echo `echo $i | rev | cut -d'/' -f 1 | rev``cat $i`; done > ' + all_tree_output
         else:
-            command = 'for i in ' + trees_dir + "/*; do echo `echo $i | rev | cut -d'.' -f 2 | cut -d'/' -f 1 | rev``cat $i`; done > " + all_tree_output
+            command = 'for i in ' + trees_dir + "/*; do echo `echo $i | rev | cut -d'.' -f 2- | cut -d'/' -f 1 | rev``cat $i`; done > " + all_tree_output
         print("Creating a MultiPhylo file containing names"+"\n")
         logfile.write("Creating a MultiPhylo file containing names"+"\n"+"\n")
         concat_tree = Popen(command, stdout=logfile, stderr=logfile, shell=True)
